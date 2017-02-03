@@ -10,14 +10,14 @@ import personal.YouXianMing.File.TextFile;
 import personal.YouXianMing.SQL.AbsSQLManager;
 import personal.YouXianMing.SQL.MySQLManager;
 import personal.YouXianMing.SQL.SQLiteManager;
-import personal.YouXianMing.SQL.AbsSQLManager.SQLManagerRunnableBlock;
+import personal.YouXianMing.SQL.AbsSQLManager.SQLManagerRunnableInterface;
 
 public class Application {
 
 	public static void main(String args[]) {
 
-		testMySQL();
 		testSQLite();
+		testMySQL();
 		testGSON();
 	}
 
@@ -35,7 +35,7 @@ public class Application {
 				System.out.println("Connect SQLite success!");
 
 				// 执行操作
-				manager.commitAndExecute(new SQLManagerRunnableBlock() {
+				manager.commitAndExecute(new SQLManagerRunnableInterface() {
 
 					@Override
 					public void block(AbsSQLManager mySQLManager) {
@@ -80,7 +80,7 @@ public class Application {
 
 		String url = "jdbc:mysql://localhost:3306/MyDataBase"; // 确保有一个MySQL有一个数据库文件是MyDataBase
 		String username = "root"; // 替换成你自己的,否则报错
-		String password = "Yx19871230"; // 替换成你自己的,否则报错
+		String password = "Yx********"; // 替换成你自己的,否则报错
 		MySQLManager manager = new MySQLManager(username, password, url);
 
 		// 数据库初始化
@@ -92,7 +92,7 @@ public class Application {
 				System.out.println("Connect MySQL success!");
 
 				// 执行操作
-				manager.commitAndExecute(new SQLManagerRunnableBlock() {
+				manager.commitAndExecute(new SQLManagerRunnableInterface() {
 
 					@Override
 					public void block(AbsSQLManager mySQLManager) {
@@ -135,6 +135,9 @@ public class Application {
 			Gson gson = new Gson();
 			RootModel model = gson.fromJson(jsonString, RootModel.class);
 			System.out.println(model.getMessage());
+			System.out.println(gson.toJson(model));
+			
+			new Gson();
 		}
 	}
 }

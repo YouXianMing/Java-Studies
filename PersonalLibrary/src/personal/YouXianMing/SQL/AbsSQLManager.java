@@ -11,9 +11,9 @@ import personal.YouXianMing.Debug.DebugMessage;
 public abstract class AbsSQLManager {
 
 	/**
-	 * 用于block的代码块
+	 * 用于执行代码块的接口
 	 */
-	public interface SQLManagerRunnableBlock {
+	public interface SQLManagerRunnableInterface {
 
 		void block(AbsSQLManager mySQLManager);
 	}
@@ -284,7 +284,7 @@ public abstract class AbsSQLManager {
 	 * @param block
 	 *            执行用的接口block
 	 */
-	public void commitAndExecute(SQLManagerRunnableBlock block) {
+	public void commitAndExecute(SQLManagerRunnableInterface block) {
 
 		if (block != null) {
 
