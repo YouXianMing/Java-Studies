@@ -4,9 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.Model.RootModel;
-import com.google.gson.Gson;
 
 import personal.YouXianMing.File.TextFile;
+import personal.YouXianMing.Gson.GsonHelper;
+
 import personal.YouXianMing.SQL.AbsSQLManager;
 import personal.YouXianMing.SQL.MySQLManager;
 import personal.YouXianMing.SQL.SQLiteManager;
@@ -80,7 +81,7 @@ public class Application {
 
 		String url = "jdbc:mysql://localhost:3306/MyDataBase"; // 确保有一个MySQL有一个数据库文件是MyDataBase
 		String username = "root"; // 替换成你自己的,否则报错
-		String password = "Yx********"; // 替换成你自己的,否则报错
+		String password = "*********"; // 替换成你自己的,否则报错
 		MySQLManager manager = new MySQLManager(username, password, url);
 
 		// 数据库初始化
@@ -132,12 +133,9 @@ public class Application {
 
 		if (jsonString != null) {
 
-			Gson gson = new Gson();
-			RootModel model = gson.fromJson(jsonString, RootModel.class);
+			RootModel model = GsonHelper.ModelFromJsonString(jsonString, RootModel.class);
 			System.out.println(model.getMessage());
-			System.out.println(gson.toJson(model));
-			
-			new Gson();
+			System.out.println(GsonHelper.ToJsonStringWithModel(model));
 		}
 	}
 }
