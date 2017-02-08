@@ -1,4 +1,4 @@
-package com.Techcode;
+package com.Application;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,13 +7,12 @@ import com.Model.RootModel;
 
 import personal.YouXianMing.File.TextFile;
 import personal.YouXianMing.Gson.GsonHelper;
-
 import personal.YouXianMing.SQL.AbsSQLManager;
 import personal.YouXianMing.SQL.MySQLManager;
 import personal.YouXianMing.SQL.SQLiteManager;
 import personal.YouXianMing.SQL.AbsSQLManager.SQLManagerRunnableInterface;
 
-public class Application {
+public class Main {
 
 	public static void main(String args[]) {
 
@@ -81,7 +80,7 @@ public class Application {
 
 		String url = "jdbc:mysql://localhost:3306/MyDataBase"; // 确保有一个MySQL有一个数据库文件是MyDataBase
 		String username = "root"; // 替换成你自己的,否则报错
-		String password = "*********"; // 替换成你自己的,否则报错
+		String password = "*******"; // 替换成你自己的,否则报错
 		MySQLManager manager = new MySQLManager(username, password, url);
 
 		// 数据库初始化
